@@ -23,18 +23,13 @@ stream = p.open(
 )
 
 data = stream.read(Chunk)
-
 data= struct.unpack(str(2* Chunk) + 'b', data)
 
-
 DataArray = np.array(data)
-
 data_fft= np.fft.fft(DataArray)
-
 frequencies=np.abs(data_fft)
 
 filtered_freq = []
-
 filtered_freq = [f if (50< index <2000 and f > 1) else 0 for index, f in enumerate(frequencies)]
 
 
